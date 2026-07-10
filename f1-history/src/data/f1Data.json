@@ -1,0 +1,625 @@
+{
+  "seasons": {
+    "2020": {
+      "year": 2020,
+      "champion": "Lewis Hamilton",
+      "constructorChampion": "Mercedes",
+      "races": 17,
+      "description": "Temporada COVID reducida. Hamilton igualó el récord de Schumacher con 7 títulos.",
+      "highlight": "7° título de Hamilton",
+      "teams": ["Mercedes", "Red Bull", "McLaren", "Renault", "Racing Point", "Ferrari", "AlphaTauri", "Alfa Romeo", "Haas", "Williams"],
+      "results": [
+        { "driver": "Lewis Hamilton",   "team": "Mercedes",  "points": 347,   "wins": 11, "podiums": 14 },
+        { "driver": "Valtteri Bottas",  "team": "Mercedes",  "points": 223,   "wins": 2,  "podiums": 11 },
+        { "driver": "Max Verstappen",   "team": "Red Bull",  "points": 214,   "wins": 2,  "podiums": 11 }
+      ]
+    },
+    "2021": {
+      "year": 2021,
+      "champion": "Max Verstappen",
+      "constructorChampion": "Mercedes",
+      "races": 22,
+      "description": "Batalla épica entre Hamilton y Verstappen. Abu Dhabi decidió el título en la última vuelta.",
+      "highlight": "1° título de Verstappen — Abu Dhabi dramático",
+      "teams": ["Mercedes", "Red Bull", "McLaren", "Ferrari", "AlphaTauri", "Aston Martin", "Alpine", "Alfa Romeo", "Haas", "Williams"],
+      "results": [
+        { "driver": "Max Verstappen",  "team": "Red Bull",  "points": 395.5, "wins": 10, "podiums": 18 },
+        { "driver": "Lewis Hamilton",  "team": "Mercedes",  "points": 387.5, "wins": 8,  "podiums": 17 },
+        { "driver": "Valtteri Bottas", "team": "Mercedes",  "points": 226,   "wins": 1,  "podiums": 11 }
+      ]
+    },
+    "2022": {
+      "year": 2022,
+      "champion": "Max Verstappen",
+      "constructorChampion": "Red Bull",
+      "races": 22,
+      "description": "Era de efecto suelo. Verstappen dominó con 15 victorias. Nuevo reglamento técnico.",
+      "highlight": "2° título de Verstappen — Dominancia total",
+      "teams": ["Red Bull", "Ferrari", "Mercedes", "Alpine", "McLaren", "Alfa Romeo", "Aston Martin", "Haas", "AlphaTauri", "Williams"],
+      "results": [
+        { "driver": "Max Verstappen",  "team": "Red Bull", "points": 454, "wins": 15, "podiums": 17 },
+        { "driver": "Charles Leclerc", "team": "Ferrari",  "points": 308, "wins": 3,  "podiums": 9  },
+        { "driver": "Sergio Pérez",    "team": "Red Bull", "points": 305, "wins": 2,  "podiums": 9  }
+      ]
+    },
+    "2023": {
+      "year": 2023,
+      "champion": "Max Verstappen",
+      "constructorChampion": "Red Bull",
+      "races": 22,
+      "description": "Verstappen batió el récord con 19 victorias en una temporada. Dominio sin precedentes.",
+      "highlight": "3° título de Verstappen — Récord histórico",
+      "teams": ["Red Bull", "Mercedes", "Ferrari", "McLaren", "Aston Martin", "Alpine", "Williams", "AlphaTauri", "Alfa Romeo", "Haas"],
+      "results": [
+        { "driver": "Max Verstappen",   "team": "Red Bull",    "points": 575, "wins": 19, "podiums": 21 },
+        { "driver": "Sergio Pérez",     "team": "Red Bull",    "points": 285, "wins": 2,  "podiums": 9  },
+        { "driver": "Fernando Alonso",  "team": "Aston Martin","points": 206, "wins": 0,  "podiums": 8  }
+      ]
+    },
+    "2024": {
+      "year": 2024,
+      "champion": "Max Verstappen",
+      "constructorChampion": "McLaren",
+      "races": 24,
+      "description": "Verstappen ganó su 4° título pese al auge de McLaren. Norris fue el mayor rival.",
+      "highlight": "4° título de Verstappen — McLaren campeón constructor",
+      "teams": ["Red Bull", "McLaren", "Ferrari", "Mercedes", "Aston Martin", "Alpine", "Williams", "Visa Cash App RB", "Haas", "Kick Sauber"],
+      "results": [
+        { "driver": "Max Verstappen", "team": "Red Bull", "points": 437, "wins": 9, "podiums": 14 },
+        { "driver": "Lando Norris",   "team": "McLaren",  "points": 374, "wins": 4, "podiums": 15 },
+        { "driver": "Charles Leclerc","team": "Ferrari",  "points": 356, "wins": 3, "podiums": 13 }
+      ]
+    },
+    "2025": {
+      "year": 2025,
+      "champion": "Lando Norris",
+      "constructorChampion": "McLaren",
+      "races": 24,
+      "description": "Norris dominó la temporada con McLaren. Primera corona para el británico.",
+      "highlight": "1° título de Norris — McLaren bicampeón constructor",
+      "teams": ["McLaren", "Red Bull", "Ferrari", "Mercedes", "Aston Martin", "Alpine", "Williams", "Visa Cash App RB", "Haas", "Kick Sauber"],
+      "results": [
+        { "driver": "Lando Norris",   "team": "McLaren",  "points": 429, "wins": 12, "podiums": 18 },
+        { "driver": "Max Verstappen", "team": "Red Bull", "points": 381, "wins": 7,  "podiums": 15 },
+        { "driver": "Oscar Piastri",  "team": "McLaren",  "points": 310, "wins": 3,  "podiums": 11 }
+      ]
+    },
+    "2026": {
+      "year": 2026,
+      "champion": null,
+      "constructorChampion": null,
+      "races": 24,
+      "description": "Nueva era de motores híbridos avanzados. Nuevo reglamento técnico revolucionario.",
+      "highlight": "Temporada en curso — Nuevo reglamento 2026",
+      "teams": ["McLaren", "Red Bull", "Ferrari", "Mercedes", "Aston Martin", "Alpine", "Williams", "Visa Cash App RB", "Haas", "Kick Sauber"],
+      "results": [
+        { "driver": "Lando Norris",   "team": "McLaren",  "points": 180, "wins": 5, "podiums": 8 },
+        { "driver": "Max Verstappen", "team": "Red Bull", "points": 163, "wins": 4, "podiums": 7 },
+        { "driver": "Charles Leclerc","team": "Ferrari",  "points": 141, "wins": 2, "podiums": 6 }
+      ]
+    }
+  },
+  "drivers": [
+    {
+      "id": "lewis-hamilton",
+      "name": "Lewis Hamilton",
+      "slug": "lewis-hamilton",
+      "nationality": "Británico",
+      "born": "07/01/1985",
+      "number": 44,
+      "teamId": "ferrari",
+      "championships": 7,
+      "wins": 104,
+      "podiums": 197,
+      "poles": 104,
+      "points": 4639.5,
+      "bio": "El más exitoso piloto de F1 de todos los tiempos. Siete veces campeón del mundo con McLaren y Mercedes.",
+      "seasons": [
+        { "year": 2020, "team": "Mercedes",  "position": 1, "points": 347,   "wins": 11 },
+        { "year": 2021, "team": "Mercedes",  "position": 2, "points": 387.5, "wins": 8  },
+        { "year": 2022, "team": "Mercedes",  "position": 6, "points": 240,   "wins": 0  },
+        { "year": 2023, "team": "Mercedes",  "position": 3, "points": 234,   "wins": 0  },
+        { "year": 2024, "team": "Mercedes",  "position": 7, "points": 211,   "wins": 2  },
+        { "year": 2025, "team": "Ferrari",   "position": 5, "points": 198,   "wins": 1  },
+        { "year": 2026, "team": "Ferrari",   "position": 4, "points": 110,   "wins": 1  }
+      ]
+    },
+    {
+      "id": "max-verstappen",
+      "name": "Max Verstappen",
+      "slug": "max-verstappen",
+      "nationality": "Neerlandés",
+      "born": "30/09/1997",
+      "number": 1,
+      "teamId": "red-bull",
+      "championships": 4,
+      "wins": 62,
+      "podiums": 107,
+      "poles": 40,
+      "points": 3124.5,
+      "bio": "Cuatro veces campeón del mundo. El piloto más joven en debutar y ganar en F1. Dominó la era 2021-2024.",
+      "seasons": [
+        { "year": 2020, "team": "Red Bull", "position": 3, "points": 214,   "wins": 2  },
+        { "year": 2021, "team": "Red Bull", "position": 1, "points": 395.5, "wins": 10 },
+        { "year": 2022, "team": "Red Bull", "position": 1, "points": 454,   "wins": 15 },
+        { "year": 2023, "team": "Red Bull", "position": 1, "points": 575,   "wins": 19 },
+        { "year": 2024, "team": "Red Bull", "position": 1, "points": 437,   "wins": 9  },
+        { "year": 2025, "team": "Red Bull", "position": 2, "points": 381,   "wins": 7  },
+        { "year": 2026, "team": "Red Bull", "position": 2, "points": 163,   "wins": 4  }
+      ]
+    },
+    {
+      "id": "lando-norris",
+      "name": "Lando Norris",
+      "slug": "lando-norris",
+      "nationality": "Británico",
+      "born": "13/11/1999",
+      "number": 4,
+      "teamId": "mclaren",
+      "championships": 1,
+      "wins": 17,
+      "podiums": 38,
+      "poles": 12,
+      "points": 1312.0,
+      "bio": "Campeón del mundo 2025. Brillante talento británico que llegó a la cima con McLaren.",
+      "seasons": [
+        { "year": 2020, "team": "McLaren", "position": 9, "points": 97,  "wins": 0  },
+        { "year": 2021, "team": "McLaren", "position": 6, "points": 160, "wins": 0  },
+        { "year": 2022, "team": "McLaren", "position": 7, "points": 122, "wins": 0  },
+        { "year": 2023, "team": "McLaren", "position": 6, "points": 205, "wins": 1  },
+        { "year": 2024, "team": "McLaren", "position": 2, "points": 374, "wins": 4  },
+        { "year": 2025, "team": "McLaren", "position": 1, "points": 429, "wins": 12 },
+        { "year": 2026, "team": "McLaren", "position": 1, "points": 180, "wins": 5  }
+      ]
+    },
+    {
+      "id": "charles-leclerc",
+      "name": "Charles Leclerc",
+      "slug": "charles-leclerc",
+      "nationality": "Monegasco",
+      "born": "16/10/1997",
+      "number": 16,
+      "teamId": "ferrari",
+      "championships": 0,
+      "wins": 8,
+      "podiums": 42,
+      "poles": 24,
+      "points": 1310.0,
+      "bio": "El príncipe de Mónaco. Talento excepcional de Ferrari que busca su primer campeonato.",
+      "seasons": [
+        { "year": 2020, "team": "Ferrari", "position": 8, "points": 98,  "wins": 0 },
+        { "year": 2021, "team": "Ferrari", "position": 7, "points": 159, "wins": 0 },
+        { "year": 2022, "team": "Ferrari", "position": 2, "points": 308, "wins": 3 },
+        { "year": 2023, "team": "Ferrari", "position": 5, "points": 206, "wins": 0 },
+        { "year": 2024, "team": "Ferrari", "position": 3, "points": 356, "wins": 3 },
+        { "year": 2025, "team": "Ferrari", "position": 4, "points": 237, "wins": 2 },
+        { "year": 2026, "team": "Ferrari", "position": 3, "points": 141, "wins": 2 }
+      ]
+    },
+    {
+      "id": "carlos-sainz",
+      "name": "Carlos Sainz",
+      "slug": "carlos-sainz",
+      "nationality": "Español",
+      "born": "01/09/1994",
+      "number": 55,
+      "teamId": "williams",
+      "championships": 0,
+      "wins": 4,
+      "podiums": 26,
+      "poles": 5,
+      "points": 1166.5,
+      "bio": "El Matador español. Conocido por su consistencia y su espectacular victoria en Singapur 2023.",
+      "seasons": [
+        { "year": 2020, "team": "McLaren",  "position": 6, "points": 105, "wins": 0 },
+        { "year": 2021, "team": "Ferrari",  "position": 5, "points": 164.5, "wins": 0 },
+        { "year": 2022, "team": "Ferrari",  "position": 5, "points": 246, "wins": 1 },
+        { "year": 2023, "team": "Ferrari",  "position": 7, "points": 200, "wins": 1 },
+        { "year": 2024, "team": "Ferrari",  "position": 5, "points": 290, "wins": 2 },
+        { "year": 2025, "team": "Williams", "position": 8, "points": 161, "wins": 0 }
+      ]
+    },
+    {
+      "id": "george-russell",
+      "name": "George Russell",
+      "slug": "george-russell",
+      "nationality": "Británico",
+      "born": "15/02/1998",
+      "number": 63,
+      "teamId": "mercedes",
+      "championships": 0,
+      "wins": 3,
+      "podiums": 18,
+      "poles": 3,
+      "points": 812.0,
+      "bio": "El 'Mr. Saturday' de F1. Russell pasó de Williams a liderar Mercedes con gran consistencia.",
+      "seasons": [
+        { "year": 2020, "team": "Williams",  "position": 15, "points": 3,   "wins": 0 },
+        { "year": 2021, "team": "Williams",  "position": 15, "points": 16,  "wins": 0 },
+        { "year": 2022, "team": "Mercedes",  "position": 4,  "points": 275, "wins": 1 },
+        { "year": 2023, "team": "Mercedes",  "position": 8,  "points": 175, "wins": 1 },
+        { "year": 2024, "team": "Mercedes",  "position": 6,  "points": 245, "wins": 1 },
+        { "year": 2025, "team": "Mercedes",  "position": 6,  "points": 187, "wins": 1 }
+      ]
+    },
+    {
+      "id": "fernando-alonso",
+      "name": "Fernando Alonso",
+      "slug": "fernando-alonso",
+      "nationality": "Español",
+      "born": "29/07/1981",
+      "number": 14,
+      "teamId": "aston-martin",
+      "championships": 2,
+      "wins": 32,
+      "podiums": 106,
+      "poles": 22,
+      "points": 2267.0,
+      "bio": "Doble campeón del mundo (2005-2006). Leyenda del automovilismo con una carrera de más de 20 años en F1.",
+      "seasons": [
+        { "year": 2020, "team": "Renault",      "position": 5,  "points": 135, "wins": 0 },
+        { "year": 2021, "team": "Alpine",        "position": 10, "points": 81,  "wins": 0 },
+        { "year": 2022, "team": "Alpine",        "position": 9,  "points": 81,  "wins": 0 },
+        { "year": 2023, "team": "Aston Martin",  "position": 4,  "points": 206, "wins": 0 },
+        { "year": 2024, "team": "Aston Martin",  "position": 10, "points": 70,  "wins": 0 },
+        { "year": 2025, "team": "Aston Martin",  "position": 9,  "points": 145, "wins": 0 }
+      ]
+    },
+    {
+      "id": "oscar-piastri",
+      "name": "Oscar Piastri",
+      "slug": "oscar-piastri",
+      "nationality": "Australiano",
+      "born": "06/04/2001",
+      "number": 81,
+      "teamId": "mclaren",
+      "championships": 0,
+      "wins": 7,
+      "podiums": 22,
+      "poles": 4,
+      "points": 692.0,
+      "bio": "La nueva estrella australiana de McLaren. Prometedor talento que viene de dominar las categorías junior.",
+      "seasons": [
+        { "year": 2023, "team": "McLaren", "position": 8, "points": 97,  "wins": 1 },
+        { "year": 2024, "team": "McLaren", "position": 4, "points": 292, "wins": 2 },
+        { "year": 2025, "team": "McLaren", "position": 3, "points": 310, "wins": 3 },
+        { "year": 2026, "team": "McLaren", "position": 5, "points": 120, "wins": 1 }
+      ]
+    },
+    {
+      "id": "sergio-perez",
+      "name": "Sergio Pérez",
+      "slug": "sergio-perez",
+      "nationality": "Mexicano",
+      "born": "26/01/1990",
+      "number": 11,
+      "teamId": "red-bull",
+      "championships": 0,
+      "wins": 6,
+      "podiums": 38,
+      "poles": 3,
+      "points": 1356.0,
+      "bio": "El piloto mexicano más exitoso de la historia. Conocido por su habilidad en la gestión de neumáticos.",
+      "seasons": [
+        { "year": 2020, "team": "Racing Point", "position": 4,  "points": 125, "wins": 1 },
+        { "year": 2021, "team": "Red Bull",      "position": 4,  "points": 190, "wins": 1 },
+        { "year": 2022, "team": "Red Bull",      "position": 3,  "points": 305, "wins": 2 },
+        { "year": 2023, "team": "Red Bull",      "position": 2,  "points": 285, "wins": 2 },
+        { "year": 2024, "team": "Red Bull",      "position": 8,  "points": 152, "wins": 0 }
+      ]
+    },
+    {
+      "id": "valtteri-bottas",
+      "name": "Valtteri Bottas",
+      "slug": "valtteri-bottas",
+      "nationality": "Finlandés",
+      "born": "28/08/1989",
+      "number": 77,
+      "teamId": "kick-sauber",
+      "championships": 0,
+      "wins": 10,
+      "podiums": 67,
+      "poles": 20,
+      "points": 1797.0,
+      "bio": "Compañero confiable de Hamilton en Mercedes. Pasó a Alfa Romeo/Kick Sauber en 2022.",
+      "seasons": [
+        { "year": 2020, "team": "Mercedes",    "position": 2, "points": 223, "wins": 2 },
+        { "year": 2021, "team": "Mercedes",    "position": 3, "points": 226, "wins": 1 },
+        { "year": 2022, "team": "Alfa Romeo",  "position": 10,"points": 49,  "wins": 0 },
+        { "year": 2023, "team": "Alfa Romeo",  "position": 10,"points": 10,  "wins": 0 },
+        { "year": 2024, "team": "Kick Sauber", "position": 19,"points": 0,   "wins": 0 }
+      ]
+    },
+    {
+      "id": "esteban-ocon",
+      "name": "Esteban Ocon",
+      "slug": "esteban-ocon",
+      "nationality": "Francés",
+      "born": "17/09/1996",
+      "number": 31,
+      "teamId": "haas",
+      "championships": 0,
+      "wins": 1,
+      "podiums": 3,
+      "poles": 0,
+      "points": 422.0,
+      "bio": "Ganador del GP de Hungría 2021. Piloto francés que pasó de Alpine a Haas en 2025.",
+      "seasons": [
+        { "year": 2020, "team": "Renault", "position": 12, "points": 62,  "wins": 0 },
+        { "year": 2021, "team": "Alpine",  "position": 7,  "points": 151, "wins": 1 },
+        { "year": 2022, "team": "Alpine",  "position": 8,  "points": 92,  "wins": 0 },
+        { "year": 2023, "team": "Alpine",  "position": 9,  "points": 58,  "wins": 0 },
+        { "year": 2024, "team": "Alpine",  "position": 12, "points": 23,  "wins": 0 },
+        { "year": 2025, "team": "Haas",    "position": 11, "points": 36,  "wins": 0 }
+      ]
+    },
+    {
+      "id": "lance-stroll",
+      "name": "Lance Stroll",
+      "slug": "lance-stroll",
+      "nationality": "Canadiense",
+      "born": "29/10/1998",
+      "number": 18,
+      "teamId": "aston-martin",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 3,
+      "poles": 1,
+      "points": 265.0,
+      "bio": "Piloto canadiense de Aston Martin. Hijo del propietario del equipo Lawrence Stroll.",
+      "seasons": [
+        { "year": 2020, "team": "Racing Point",  "position": 11, "points": 75,  "wins": 0 },
+        { "year": 2021, "team": "Aston Martin",  "position": 13, "points": 34,  "wins": 0 },
+        { "year": 2022, "team": "Aston Martin",  "position": 15, "points": 18,  "wins": 0 },
+        { "year": 2023, "team": "Aston Martin",  "position": 9,  "points": 74,  "wins": 0 },
+        { "year": 2024, "team": "Aston Martin",  "position": 11, "points": 24,  "wins": 0 },
+        { "year": 2025, "team": "Aston Martin",  "position": 13, "points": 40,  "wins": 0 }
+      ]
+    },
+    {
+      "id": "pierre-gasly",
+      "name": "Pierre Gasly",
+      "slug": "pierre-gasly",
+      "nationality": "Francés",
+      "born": "07/02/1996",
+      "number": 10,
+      "teamId": "alpine",
+      "championships": 0,
+      "wins": 1,
+      "podiums": 4,
+      "poles": 0,
+      "points": 571.0,
+      "bio": "Ganador del GP de Italia 2020 con AlphaTauri. Pasó a Alpine en 2023.",
+      "seasons": [
+        { "year": 2020, "team": "AlphaTauri", "position": 7,  "points": 75,  "wins": 1 },
+        { "year": 2021, "team": "AlphaTauri", "position": 9,  "points": 110, "wins": 0 },
+        { "year": 2022, "team": "AlphaTauri", "position": 11, "points": 23,  "wins": 0 },
+        { "year": 2023, "team": "Alpine",     "position": 11, "points": 62,  "wins": 0 },
+        { "year": 2024, "team": "Alpine",     "position": 9,  "points": 42,  "wins": 0 },
+        { "year": 2025, "team": "Alpine",     "position": 10, "points": 55,  "wins": 0 }
+      ]
+    },
+    {
+      "id": "alexander-albon",
+      "name": "Alexander Albon",
+      "slug": "alexander-albon",
+      "nationality": "Tailandés",
+      "born": "23/03/1996",
+      "number": 23,
+      "teamId": "williams",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 2,
+      "poles": 0,
+      "points": 204.0,
+      "bio": "Piloto tailandés-británico. Tras su paso por Red Bull, se convirtió en líder de Williams.",
+      "seasons": [
+        { "year": 2020, "team": "Red Bull",  "position": 7,  "points": 105, "wins": 0 },
+        { "year": 2022, "team": "Williams",  "position": 14, "points": 4,   "wins": 0 },
+        { "year": 2023, "team": "Williams",  "position": 13, "points": 27,  "wins": 0 },
+        { "year": 2024, "team": "Williams",  "position": 14, "points": 6,   "wins": 0 },
+        { "year": 2025, "team": "Williams",  "position": 12, "points": 62,  "wins": 0 }
+      ]
+    },
+    {
+      "id": "yuki-tsunoda",
+      "name": "Yuki Tsunoda",
+      "slug": "yuki-tsunoda",
+      "nationality": "Japonés",
+      "born": "11/05/2000",
+      "number": 22,
+      "teamId": "visa-cash-app-rb",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "points": 138.0,
+      "bio": "El piloto japonés más rápido de su generación. Compite con Visa Cash App RB desde 2021.",
+      "seasons": [
+        { "year": 2021, "team": "AlphaTauri",      "position": 14, "points": 32, "wins": 0 },
+        { "year": 2022, "team": "AlphaTauri",      "position": 17, "points": 12, "wins": 0 },
+        { "year": 2023, "team": "AlphaTauri",      "position": 14, "points": 17, "wins": 0 },
+        { "year": 2024, "team": "Visa Cash App RB", "position": 13, "points": 30, "wins": 0 },
+        { "year": 2025, "team": "Visa Cash App RB", "position": 14, "points": 47, "wins": 0 }
+      ]
+    },
+    {
+      "id": "nico-hulkenberg",
+      "name": "Nico Hülkenberg",
+      "slug": "nico-hulkenberg",
+      "nationality": "Alemán",
+      "born": "19/08/1987",
+      "number": 27,
+      "teamId": "kick-sauber",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 1,
+      "points": 530.0,
+      "bio": "El piloto sin podio más experimentado de F1. Regresó a tiempo completo con Haas en 2023.",
+      "seasons": [
+        { "year": 2020, "team": "Racing Point", "position": 13, "points": 10, "wins": 0 },
+        { "year": 2023, "team": "Haas",         "position": 12, "points": 9,  "wins": 0 },
+        { "year": 2024, "team": "Haas",         "position": 8,  "points": 31, "wins": 0 },
+        { "year": 2025, "team": "Kick Sauber",  "position": 16, "points": 10, "wins": 0 }
+      ]
+    },
+    {
+      "id": "kevin-magnussen",
+      "name": "Kevin Magnussen",
+      "slug": "kevin-magnussen",
+      "nationality": "Danés",
+      "born": "05/10/1992",
+      "number": 20,
+      "teamId": "haas",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 1,
+      "poles": 1,
+      "points": 195.0,
+      "bio": "Piloto danés conocido por su estilo agresivo. Regresó a Haas en 2022 tras un año de ausencia.",
+      "seasons": [
+        { "year": 2022, "team": "Haas", "position": 13, "points": 25, "wins": 0 },
+        { "year": 2023, "team": "Haas", "position": 16, "points": 3,  "wins": 0 },
+        { "year": 2024, "team": "Haas", "position": 16, "points": 16, "wins": 0 }
+      ]
+    },
+    {
+      "id": "zhou-guanyu",
+      "name": "Zhou Guanyu",
+      "slug": "zhou-guanyu",
+      "nationality": "Chino",
+      "born": "30/05/1999",
+      "number": 24,
+      "teamId": "kick-sauber",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "points": 12.0,
+      "bio": "El primer piloto chino en la historia de la F1. Debutó con Alfa Romeo en 2022.",
+      "seasons": [
+        { "year": 2022, "team": "Alfa Romeo",  "position": 18, "points": 6, "wins": 0 },
+        { "year": 2023, "team": "Alfa Romeo",  "position": 18, "points": 6, "wins": 0 },
+        { "year": 2024, "team": "Kick Sauber", "position": 20, "points": 0, "wins": 0 }
+      ]
+    },
+    {
+      "id": "liam-lawson",
+      "name": "Liam Lawson",
+      "slug": "liam-lawson",
+      "nationality": "Neozelandés",
+      "born": "11/02/2002",
+      "number": 30,
+      "teamId": "red-bull",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "points": 4.0,
+      "bio": "Joven promesa neozelandesa. Sustituyó a Ricciardo en 2023 y fue promovido a Red Bull en 2025.",
+      "seasons": [
+        { "year": 2023, "team": "AlphaTauri",      "position": 17, "points": 2, "wins": 0 },
+        { "year": 2024, "team": "Visa Cash App RB", "position": 17, "points": 2, "wins": 0 },
+        { "year": 2025, "team": "Red Bull",         "position": 15, "points": 0, "wins": 0 }
+      ]
+    },
+    {
+      "id": "kimi-antonelli",
+      "name": "Kimi Antonelli",
+      "slug": "kimi-antonelli",
+      "nationality": "Italiano",
+      "born": "25/08/2006",
+      "number": 12,
+      "teamId": "mercedes",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 1,
+      "poles": 0,
+      "points": 122.0,
+      "bio": "La gran joya de Mercedes. Debutó en F1 en 2025 siendo el sucesor directo de Lewis Hamilton.",
+      "seasons": [
+        { "year": 2025, "team": "Mercedes", "position": 7,  "points": 122, "wins": 0 },
+        { "year": 2026, "team": "Mercedes", "position": 6,  "points": 88,  "wins": 0 }
+      ]
+    },
+    {
+      "id": "oliver-bearman",
+      "name": "Oliver Bearman",
+      "slug": "oliver-bearman",
+      "nationality": "Británico",
+      "born": "08/05/2005",
+      "number": 87,
+      "teamId": "haas",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "points": 8.0,
+      "bio": "Joven piloto británico. Sustituyó a Sainz en Ferrari en 2024 y debutó en Haas en 2025.",
+      "seasons": [
+        { "year": 2024, "team": "Ferrari", "position": 0,  "points": 1,  "wins": 0 },
+        { "year": 2025, "team": "Haas",    "position": 17, "points": 7,  "wins": 0 }
+      ]
+    },
+    {
+      "id": "jack-doohan",
+      "name": "Jack Doohan",
+      "slug": "jack-doohan",
+      "nationality": "Australiano",
+      "born": "20/01/2003",
+      "number": 7,
+      "teamId": "alpine",
+      "championships": 0,
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "points": 5.0,
+      "bio": "Hijo de la leyenda del motociclismo Mick Doohan. Debutó con Alpine en 2025.",
+      "seasons": [
+        { "year": 2025, "team": "Alpine", "position": 18, "points": 5, "wins": 0 }
+      ]
+    }
+  ],
+  "teams": [
+    { "id": "mercedes",        "name": "Mercedes",         "fullName": "Mercedes-AMG Petronas F1 Team",  "base": "Brackley, UK",        "founded": 2010, "championships": 8,  "color": "#00D2BE", "wins": 125 },
+    { "id": "red-bull",        "name": "Red Bull",          "fullName": "Oracle Red Bull Racing",         "base": "Milton Keynes, UK",   "founded": 2005, "championships": 6,  "color": "#3671C6", "wins": 115 },
+    { "id": "ferrari",         "name": "Ferrari",           "fullName": "Scuderia Ferrari HP",            "base": "Maranello, Italia",   "founded": 1950, "championships": 16, "color": "#E8002D", "wins": 243 },
+    { "id": "mclaren",         "name": "McLaren",           "fullName": "McLaren Formula 1 Team",         "base": "Woking, UK",          "founded": 1966, "championships": 8,  "color": "#FF8000", "wins": 183 },
+    { "id": "aston-martin",    "name": "Aston Martin",      "fullName": "Aston Martin Aramco F1 Team",    "base": "Silverstone, UK",     "founded": 2021, "championships": 0,  "color": "#358C75", "wins": 0   },
+    { "id": "alpine",          "name": "Alpine",            "fullName": "BWT Alpine F1 Team",             "base": "Enstone, UK",         "founded": 2021, "championships": 0,  "color": "#0093CC", "wins": 1   },
+    { "id": "williams",        "name": "Williams",          "fullName": "Williams Racing",                "base": "Grove, UK",           "founded": 1977, "championships": 7,  "color": "#37BEDD", "wins": 114 },
+    { "id": "haas",            "name": "Haas",              "fullName": "MoneyGram Haas F1 Team",         "base": "Kannapolis, USA",     "founded": 2016, "championships": 0,  "color": "#B6BABD", "wins": 0   },
+    { "id": "kick-sauber",     "name": "Kick Sauber",       "fullName": "Stake F1 Team Kick Sauber",      "base": "Hinwil, Suiza",       "founded": 1993, "championships": 0,  "color": "#52E252", "wins": 0   },
+    { "id": "visa-cash-app-rb","name": "Visa Cash App RB",  "fullName": "Visa Cash App RB Formula One Team","base": "Faenza, Italia",    "founded": 2006, "championships": 0,  "color": "#6692FF", "wins": 2   }
+  ],
+  "circuits": [
+    { "id": 1,  "name": "Circuito de Mónaco",             "country": "Mónaco",          "city": "Monte Carlo",    "since": 1950, "lat": 43.7347,  "lng": 7.4206,    "laps": 78, "length": 3.337, "active": true },
+    { "id": 2,  "name": "Silverstone Circuit",            "country": "Reino Unido",     "city": "Silverstone",    "since": 1950, "lat": 52.0786,  "lng": -1.0169,   "laps": 52, "length": 5.891, "active": true },
+    { "id": 3,  "name": "Monza Circuit",                  "country": "Italia",          "city": "Monza",          "since": 1950, "lat": 45.6156,  "lng": 9.2811,    "laps": 53, "length": 5.793, "active": true },
+    { "id": 4,  "name": "Spa-Francorchamps",              "country": "Bélgica",         "city": "Spa",            "since": 1950, "lat": 50.4372,  "lng": 5.9714,    "laps": 44, "length": 7.004, "active": true },
+    { "id": 5,  "name": "Circuit of the Americas",        "country": "EE.UU.",          "city": "Austin",         "since": 2012, "lat": 30.1328,  "lng": -97.6411,  "laps": 56, "length": 5.513, "active": true },
+    { "id": 6,  "name": "Suzuka Circuit",                 "country": "Japón",           "city": "Suzuka",         "since": 1987, "lat": 34.8431,  "lng": 136.5407,  "laps": 53, "length": 5.807, "active": true },
+    { "id": 7,  "name": "Interlagos",                     "country": "Brasil",          "city": "São Paulo",      "since": 1973, "lat": -23.7036, "lng": -46.6997,  "laps": 71, "length": 4.309, "active": true },
+    { "id": 8,  "name": "Yas Marina Circuit",             "country": "EAU",             "city": "Abu Dhabi",      "since": 2009, "lat": 24.4672,  "lng": 54.6031,   "laps": 58, "length": 5.281, "active": true },
+    { "id": 9,  "name": "Bahrain International Circuit",  "country": "Baréin",          "city": "Sakhir",         "since": 2004, "lat": 26.0325,  "lng": 50.5106,   "laps": 57, "length": 5.412, "active": true },
+    { "id": 10, "name": "Albert Park Circuit",            "country": "Australia",       "city": "Melbourne",      "since": 1996, "lat": -37.8497, "lng": 144.968,   "laps": 58, "length": 5.278, "active": true },
+    { "id": 11, "name": "Circuit de Barcelona-Catalunya", "country": "España",          "city": "Barcelona",      "since": 1991, "lat": 41.57,    "lng": 2.2611,    "laps": 66, "length": 4.657, "active": true },
+    { "id": 12, "name": "Red Bull Ring",                  "country": "Austria",         "city": "Spielberg",      "since": 1970, "lat": 47.2197,  "lng": 14.7647,   "laps": 71, "length": 4.318, "active": true },
+    { "id": 13, "name": "Hungaroring",                    "country": "Hungría",         "city": "Budapest",       "since": 1986, "lat": 47.5789,  "lng": 19.2486,   "laps": 70, "length": 4.381, "active": true },
+    { "id": 14, "name": "Zandvoort Circuit",              "country": "Países Bajos",    "city": "Zandvoort",      "since": 1952, "lat": 52.3888,  "lng": 4.5409,    "laps": 72, "length": 4.259, "active": true },
+    { "id": 15, "name": "Marina Bay Street Circuit",      "country": "Singapur",        "city": "Singapur",       "since": 2008, "lat": 1.2914,   "lng": 103.864,   "laps": 62, "length": 5.063, "active": true },
+    { "id": 16, "name": "Shanghai International Circuit", "country": "China",           "city": "Shanghái",       "since": 2004, "lat": 31.3389,  "lng": 121.22,    "laps": 56, "length": 5.451, "active": true },
+    { "id": 17, "name": "Autodromo Hermanos Rodríguez",   "country": "México",          "city": "Ciudad de México","since": 1963, "lat": 19.4042,  "lng": -99.0907,  "laps": 71, "length": 4.304, "active": true },
+    { "id": 18, "name": "Losail International Circuit",   "country": "Qatar",           "city": "Lusail",         "since": 2021, "lat": 25.49,    "lng": 51.4542,   "laps": 57, "length": 5.38,  "active": true },
+    { "id": 19, "name": "Las Vegas Street Circuit",       "country": "EE.UU.",          "city": "Las Vegas",      "since": 2023, "lat": 36.1147,  "lng": -115.1728, "laps": 50, "length": 6.12,  "active": true },
+    { "id": 20, "name": "Jeddah Corniche Circuit",        "country": "Arabia Saudita",  "city": "Jeddah",         "since": 2021, "lat": 21.6319,  "lng": 39.1044,   "laps": 50, "length": 6.174, "active": true }
+  ],
+  "recentRaces": [
+    { "race": "GP de Australia",    "circuit": "Albert Park", "date": "2026-03-16", "winner": "Lando Norris",    "team": "McLaren",  "fastestLap": "Oscar Piastri"   },
+    { "race": "GP de Baréin",       "circuit": "Sakhir",      "date": "2026-03-23", "winner": "Max Verstappen",  "team": "Red Bull", "fastestLap": "Charles Leclerc" },
+    { "race": "GP de Arabia Saudita","circuit": "Jeddah",     "date": "2026-04-06", "winner": "Lando Norris",    "team": "McLaren",  "fastestLap": "Lando Norris"    },
+    { "race": "GP de Japón",        "circuit": "Suzuka",      "date": "2026-04-13", "winner": "Max Verstappen",  "team": "Red Bull", "fastestLap": "Max Verstappen"  },
+    { "race": "GP de China",        "circuit": "Shanghái",    "date": "2026-04-20", "winner": "Charles Leclerc", "team": "Ferrari",  "fastestLap": "Oscar Piastri"   }
+  ]
+}
