@@ -9,5 +9,10 @@ import java.util.List;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, String> {
     List<Driver> findByActiveTrue();
+
     List<Driver> findByActiveFalse();
+
+    boolean existsByNumberAndActiveTrue(int number);
+
+    List<Driver> findByNameContainingIgnoreCaseAndActiveTrue(String name);
 }

@@ -15,11 +15,15 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class TeamService {
 
-    @Autowired private TeamRepository   teamRepository;
-    @Autowired private DriverRepository driverRepository;
+    @Autowired
+    private TeamRepository teamRepository;
+    @Autowired
+    private DriverRepository driverRepository;
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -31,14 +35,14 @@ public class TeamService {
 
     public Team getTeamById(String id) {
         return teamRepository.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Escudería no encontrada con ID: " + id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Escudería no encontrada con ID: " + id));
     }
 
     public Team createTeam(Team team) {
         if (teamRepository.existsById(team.getId())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
-                "La escudería ya existe con el ID: " + team.getId());
+                    "La escudería ya existe con el ID: " + team.getId());
         }
         team.setStatus(Team.TeamStatus.APPROVED);
         return teamRepository.save(team);
@@ -68,9 +72,9 @@ public class TeamService {
 
         // Generar ID desde el nombre corto
         String teamName = (String) body.get("teamName");
-        String teamId   = teamName.toLowerCase()
-            .replaceAll("[^a-z0-9]", "-")
-            .replaceAll("-+", "-");
+        String teamId = teamName.toLowerCase()
+                .replaceAll("[^a-z0-9]", "-")
+                .replaceAll("-+", "-");
         team.setId(teamId);
         team.setName(teamName);
         team.setFullName((String) body.get("fullName"));
@@ -115,14 +119,15 @@ public class TeamService {
     }
 
     // Aprobar equipo → cambia status e inserta pilotos en drivers
+    @Transactional
     public Team approveTeam(String id) {
         Team team = teamRepository.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Equipo no encontrado: " + id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Equipo no encontrado: " + id));
 
         if (team.getStatus() != Team.TeamStatus.PENDING) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                "Solo se pueden aprobar equipos en estado PENDING");
+                    "Solo se pueden aprobar equipos en estado PENDING");
         }
 
         team.setStatus(Team.TeamStatus.APPROVED);
@@ -137,12 +142,12 @@ public class TeamService {
     // Rechazar equipo con motivo
     public Team rejectTeam(String id, String reason) {
         Team team = teamRepository.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Equipo no encontrado: " + id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Equipo no encontrado: " + id));
 
         if (team.getStatus() != Team.TeamStatus.PENDING) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                "Solo se pueden rechazar equipos en estado PENDING");
+                    "Solo se pueden rechazar equipos en estado PENDING");
         }
 
         team.setStatus(Team.TeamStatus.REJECTED);
@@ -154,25 +159,27 @@ public class TeamService {
 
     // ── HELPER: insertar pilotos al aprobar equipo ────────────────
     private void insertPilotsFromTeam(Team team) {
-        if (team.getPilotsData() == null || team.getPilotsData().isBlank()) return;
+        if (team.getPilotsData() == null || team.getPilotsData().isBlank())
+            return;
 
         try {
             List<Map<String, Object>> pilots = mapper.readValue(
-                team.getPilotsData(),
-                new TypeReference<>() {}
-            );
+                    team.getPilotsData(),
+                    new TypeReference<>() {
+                    });
 
             for (int i = 0; i < pilots.size(); i++) {
                 Map<String, Object> p = pilots.get(i);
                 String name = (String) p.get("name");
-                if (name == null || name.isBlank()) continue;
+                if (name == null || name.isBlank())
+                    continue;
 
                 Driver driver = new Driver();
 
                 // Generar ID y slug desde el nombre
                 String slug = name.toLowerCase()
-                    .replaceAll("[^a-z0-9]", "-")
-                    .replaceAll("-+", "-");
+                        .replaceAll("[^a-z0-9]", "-")
+                        .replaceAll("-+", "-");
                 driver.setId(slug + "-" + System.currentTimeMillis() + i);
                 driver.setSlug(slug);
                 driver.setName(name);
@@ -191,7 +198,12 @@ public class TeamService {
                 driverRepository.save(driver);
             }
         } catch (Exception e) {
-            System.err.println("⚠️ Error al insertar pilotos del equipo " + team.getId() + ": " + e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Error al insertar pilotos del equipo " + team.getId() + ": " + e.getMessage());
         }
+    }
+
+    public List<Team> searchTeams(String name) {
+        return teamRepository.findByNameContainingIgnoreCase(name);
     }
 }

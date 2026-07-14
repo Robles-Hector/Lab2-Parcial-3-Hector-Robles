@@ -15,12 +15,17 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class DriverService {
 
-    @Autowired private DriverRepository         driverRepository;
-    @Autowired private DriverTransferRepository transferRepository;
-    @Autowired private TeamRepository           teamRepository;
+    @Autowired
+    private DriverRepository driverRepository;
+    @Autowired
+    private DriverTransferRepository transferRepository;
+    @Autowired
+    private TeamRepository teamRepository;
 
     // Solo activos
     public List<Driver> getAllDrivers() {
@@ -34,12 +39,20 @@ public class DriverService {
 
     public Driver getDriverById(String id) {
         return driverRepository.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Piloto no encontrado con id: " + id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Piloto no encontrado con id: " + id));
     }
 
     public Driver createDriver(Driver driver) {
+        if (driverRepository.existsByNumberAndActiveTrue(driver.getNumber())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Ya existe un piloto activo con el número " + driver.getNumber());
+        }
         return driverRepository.save(driver);
+    }
+
+    public List<Driver> searchDrivers(String name) {
+        return driverRepository.findByNameContainingIgnoreCaseAndActiveTrue(name);
     }
 
     public Driver updateDriver(String id, Driver details) {
@@ -68,24 +81,25 @@ public class DriverService {
     // Restaurar piloto eliminado (admin)
     public Driver restoreDriver(String id) {
         Driver driver = driverRepository.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Piloto no encontrado con id: " + id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Piloto no encontrado con id: " + id));
         driver.setActive(true);
         return driverRepository.save(driver);
     }
 
     // ── TRANSFERENCIAS ────────────────────────────────────────────
 
+    @Transactional
     public DriverTransfer transferDriver(String driverId, Map<String, Object> body, User admin) {
         Driver driver = getDriverById(driverId);
 
         String toTeamId = (String) body.get("toTeamId");
-        int    season   = Integer.parseInt(String.valueOf(body.get("season")));
-        String notes    = (String) body.getOrDefault("notes", "");
+        int season = Integer.parseInt(String.valueOf(body.get("season")));
+        String notes = (String) body.getOrDefault("notes", "");
 
         Team toTeam = teamRepository.findById(toTeamId)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Equipo destino no encontrado: " + toTeamId));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Equipo destino no encontrado: " + toTeamId));
 
         // Registrar transferencia
         DriverTransfer transfer = new DriverTransfer();

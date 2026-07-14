@@ -11,4 +11,6 @@ import java.util.List;
 public interface TeamRepository extends JpaRepository<Team, String> {
     List<Team> findByStatus(Team.TeamStatus status);
     List<Team> findBySubmittedBy(User user);
+
+    List<Team> findByNameContainingIgnoreCase(String name);
 }

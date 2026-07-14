@@ -8,9 +8,12 @@ import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.EqualsAndHashCode;
+
 @Entity
 @Table(name = "drivers")
 @Data
+@EqualsAndHashCode(of = "id")   // 👈 agrega esto: equals/hashCode solo por id
 @NoArgsConstructor
 public class Driver {
 
@@ -45,9 +48,6 @@ public class Driver {
     @Column(nullable = false)
     private boolean active = true;
 
-    // Historial de temporadas como JSON: [{year, team, position, points, wins}, ...]
-    // Se guarda como texto plano porque cambia de estructura con cada temporada
-    // y no justifica una tabla relacional separada para este alcance del proyecto.
     @Column(name = "seasons_data", columnDefinition = "TEXT")
     private String seasonsData;
 

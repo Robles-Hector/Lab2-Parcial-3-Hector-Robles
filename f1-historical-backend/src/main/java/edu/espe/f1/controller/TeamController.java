@@ -1,5 +1,7 @@
 package edu.espe.f1.controller;
 
+import edu.espe.f1.dto.TeamMapper;
+import edu.espe.f1.dto.TeamResponseDTO;
 import edu.espe.f1.entity.Team;
 import edu.espe.f1.entity.User;
 import edu.espe.f1.service.AuthService;
@@ -18,31 +20,40 @@ import java.util.Map;
 @CrossOrigin(origins = "*")
 public class TeamController {
 
-    @Autowired private TeamService  teamService;
-    @Autowired private AuthService  authService;
+    @Autowired
+    private TeamService teamService;
+    
+    @Autowired
+    private AuthService authService;
 
     // GET /api/teams — solo APPROVED
     @GetMapping
-    public ResponseEntity<List<Team>> getAllTeams() {
-        return ResponseEntity.ok(teamService.getAllTeams());
+    public ResponseEntity<List<TeamResponseDTO>> getAllTeams() {
+        List<TeamResponseDTO> dtos = teamService.getAllTeams().stream()
+                .map(TeamMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // GET /api/teams/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<Team> getTeamById(@PathVariable String id) {
-        return ResponseEntity.ok(teamService.getTeamById(id));
+    public ResponseEntity<TeamResponseDTO> getTeamById(@PathVariable String id) {
+        Team team = teamService.getTeamById(id);
+        return ResponseEntity.ok(TeamMapper.toDTO(team));
     }
 
     // POST /api/teams — crear equipo aprobado (admin)
     @PostMapping
-    public ResponseEntity<Team> createTeam(@Valid @RequestBody Team team) {
-        return new ResponseEntity<>(teamService.createTeam(team), HttpStatus.CREATED);
+    public ResponseEntity<TeamResponseDTO> createTeam(@Valid @RequestBody Team team) {
+        Team created = teamService.createTeam(team);
+        return new ResponseEntity<>(TeamMapper.toDTO(created), HttpStatus.CREATED);
     }
 
     // PUT /api/teams/{id}
     @PutMapping("/{id}")
-    public ResponseEntity<Team> updateTeam(@PathVariable String id, @Valid @RequestBody Team teamDetails) {
-        return ResponseEntity.ok(teamService.updateTeam(id, teamDetails));
+    public ResponseEntity<TeamResponseDTO> updateTeam(@PathVariable String id, @Valid @RequestBody Team teamDetails) {
+        Team updated = teamService.updateTeam(id, teamDetails);
+        return ResponseEntity.ok(TeamMapper.toDTO(updated));
     }
 
     // DELETE /api/teams/{id}
@@ -55,34 +66,39 @@ public class TeamController {
     // ── POSTULACIONES ─────────────────────────────────────────────
 
     // POST /api/teams/pending — usuario postula un equipo nuevo
-    // Header: Authorization: Bearer <token>
     @PostMapping("/pending")
-    public ResponseEntity<Team> submitTeam(
-            @RequestBody Map<String, Object> body,
-            @RequestHeader("Authorization") String authHeader) {
-        User user = authService.getUserFromToken(authHeader);
-        return new ResponseEntity<>(teamService.submitTeam(body, user), HttpStatus.CREATED);
+    public ResponseEntity<TeamResponseDTO> submitTeam(@RequestBody Map<String, Object> body) {
+        User user = authService.getCurrentUser();
+        Team submitted = teamService.submitTeam(body, user);
+        return new ResponseEntity<>(TeamMapper.toDTO(submitted), HttpStatus.CREATED);
     }
 
     // GET /api/teams/pending — admin ve todos los pendientes
     @GetMapping("/pending")
-    public ResponseEntity<List<Team>> getPendingTeams() {
-        return ResponseEntity.ok(teamService.getPendingTeams());
+    public ResponseEntity<List<TeamResponseDTO>> getPendingTeams() {
+        List<TeamResponseDTO> dtos = teamService.getPendingTeams().stream()
+                .map(TeamMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // GET /api/teams/rejected — admin ve todos los rechazados
     @GetMapping("/rejected")
-    public ResponseEntity<List<Team>> getRejectedTeams() {
-        return ResponseEntity.ok(teamService.getRejectedTeams());
+    public ResponseEntity<List<TeamResponseDTO>> getRejectedTeams() {
+        List<TeamResponseDTO> dtos = teamService.getRejectedTeams().stream()
+                .map(TeamMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // GET /api/teams/my-submissions — usuario ve sus propias postulaciones
-    // Header: Authorization: Bearer <token>
     @GetMapping("/my-submissions")
-    public ResponseEntity<List<Team>> getMySubmissions(
-            @RequestHeader("Authorization") String authHeader) {
-        User user = authService.getUserFromToken(authHeader);
-        return ResponseEntity.ok(teamService.getMySubmissions(user));
+    public ResponseEntity<List<TeamResponseDTO>> getMySubmissions() {
+        User user = authService.getCurrentUser();
+        List<TeamResponseDTO> dtos = teamService.getMySubmissions(user).stream()
+                .map(TeamMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // PUT /api/teams/{id}/approve — admin aprueba e inserta pilotos
@@ -90,9 +106,8 @@ public class TeamController {
     public ResponseEntity<Map<String, Object>> approveTeam(@PathVariable String id) {
         Team team = teamService.approveTeam(id);
         return ResponseEntity.ok(Map.of(
-            "message", "✅ \"" + team.getName() + "\" aprobado y visible en la parrilla",
-            "team",    team
-        ));
+                "message", "✅ \"" + team.getName() + "\" aprobado y visible en la parrilla",
+                "team", TeamMapper.toDTO(team)));
     }
 
     // PUT /api/teams/{id}/reject — admin rechaza con motivo opcional
@@ -104,8 +119,16 @@ public class TeamController {
         String reason = body != null ? body.getOrDefault("reason", "") : "";
         Team team = teamService.rejectTeam(id, reason);
         return ResponseEntity.ok(Map.of(
-            "message", "❌ \"" + team.getName() + "\" rechazado",
-            "team",    team
-        ));
+                "message", "❌ \"" + team.getName() + "\" rechazado",
+                "team", TeamMapper.toDTO(team)));
+    }
+
+    // GET /api/teams/search?name=ferrari
+    @GetMapping("/search")
+    public ResponseEntity<List<TeamResponseDTO>> searchTeams(@RequestParam String name) {
+        List<TeamResponseDTO> dtos = teamService.searchTeams(name).stream()
+                .map(TeamMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 }

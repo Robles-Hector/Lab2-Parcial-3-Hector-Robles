@@ -31,3 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Excluir archivo de variables de entorno reales
+.env
+
+# Compilados y artefactos de construcción
+target/
+*.war
+*.jar
+
+# Configuraciones de IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/

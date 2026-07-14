@@ -1,5 +1,7 @@
 package edu.espe.f1.controller;
 
+import edu.espe.f1.dto.DriverMapper;
+import edu.espe.f1.dto.DriverResponseDTO;
 import edu.espe.f1.entity.Driver;
 import edu.espe.f1.entity.DriverTransfer;
 import edu.espe.f1.entity.User;
@@ -19,39 +21,51 @@ import java.util.Map;
 @CrossOrigin(origins = "*")
 public class DriverController {
 
-    @Autowired private DriverService driverService;
-    @Autowired private AuthService   authService;
+    @Autowired
+    private DriverService driverService;
+    
+    @Autowired
+    private AuthService authService;
 
     // GET /api/drivers — solo activos
     @GetMapping
-    public ResponseEntity<List<Driver>> getAllDrivers() {
-        return ResponseEntity.ok(driverService.getAllDrivers());
+    public ResponseEntity<List<DriverResponseDTO>> getAllDrivers() {
+        List<DriverResponseDTO> dtos = driverService.getAllDrivers().stream()
+                .map(DriverMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // GET /api/drivers/inactive — solo admin
     @GetMapping("/inactive")
-    public ResponseEntity<List<Driver>> getInactiveDrivers() {
-        return ResponseEntity.ok(driverService.getInactiveDrivers());
+    public ResponseEntity<List<DriverResponseDTO>> getInactiveDrivers() {
+        List<DriverResponseDTO> dtos = driverService.getInactiveDrivers().stream()
+                .map(DriverMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // GET /api/drivers/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<Driver> getDriverById(@PathVariable String id) {
-        return ResponseEntity.ok(driverService.getDriverById(id));
+    public ResponseEntity<DriverResponseDTO> getDriverById(@PathVariable String id) {
+        Driver driver = driverService.getDriverById(id);
+        return ResponseEntity.ok(DriverMapper.toDTO(driver));
     }
 
     // POST /api/drivers
     @PostMapping
-    public ResponseEntity<Driver> createDriver(@Valid @RequestBody Driver driver) {
-        return new ResponseEntity<>(driverService.createDriver(driver), HttpStatus.CREATED);
+    public ResponseEntity<DriverResponseDTO> createDriver(@Valid @RequestBody Driver driver) {
+        Driver created = driverService.createDriver(driver);
+        return new ResponseEntity<>(DriverMapper.toDTO(created), HttpStatus.CREATED);
     }
 
     // PUT /api/drivers/{id}
     @PutMapping("/{id}")
-    public ResponseEntity<Driver> updateDriver(
+    public ResponseEntity<DriverResponseDTO> updateDriver(
             @PathVariable String id,
             @Valid @RequestBody Driver driverDetails) {
-        return ResponseEntity.ok(driverService.updateDriver(id, driverDetails));
+        Driver updated = driverService.updateDriver(id, driverDetails);
+        return ResponseEntity.ok(DriverMapper.toDTO(updated));
     }
 
     // DELETE /api/drivers/{id} — borrado LÓGICO
@@ -63,21 +77,19 @@ public class DriverController {
 
     // PUT /api/drivers/{id}/restore — restaurar piloto (admin)
     @PutMapping("/{id}/restore")
-    public ResponseEntity<Driver> restoreDriver(@PathVariable String id) {
-        return ResponseEntity.ok(driverService.restoreDriver(id));
+    public ResponseEntity<DriverResponseDTO> restoreDriver(@PathVariable String id) {
+        Driver restored = driverService.restoreDriver(id);
+        return ResponseEntity.ok(DriverMapper.toDTO(restored));
     }
 
-    // ── TRANSFERENCIAS ────────────────────────────────────────────
-
     // POST /api/drivers/{id}/transfer
-    // Header: Authorization: Bearer <token>
     // Body: { "toTeamId": "mercedes", "season": 2027, "notes": "..." }
     @PostMapping("/{id}/transfer")
     public ResponseEntity<DriverTransfer> transferDriver(
             @PathVariable String id,
-            @RequestBody Map<String, Object> body,
-            @RequestHeader("Authorization") String authHeader) {
-        User admin = authService.getUserFromToken(authHeader);
+            @RequestBody Map<String, Object> body) {
+        // Se obtiene el usuario administrativo directamente desde el contexto seguro
+        User admin = authService.getCurrentUser();
         return ResponseEntity.ok(driverService.transferDriver(id, body, admin));
     }
 
@@ -85,5 +97,14 @@ public class DriverController {
     @GetMapping("/{id}/transfers")
     public ResponseEntity<List<DriverTransfer>> getTransferHistory(@PathVariable String id) {
         return ResponseEntity.ok(driverService.getTransferHistory(id));
+    }
+
+    // GET /api/drivers/search?name=hamilton
+    @GetMapping("/search")
+    public ResponseEntity<List<DriverResponseDTO>> searchDrivers(@RequestParam String name) {
+        List<DriverResponseDTO> dtos = driverService.searchDrivers(name).stream()
+                .map(DriverMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 }

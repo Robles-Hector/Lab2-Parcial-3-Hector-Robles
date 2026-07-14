@@ -1,5 +1,7 @@
 package edu.espe.f1.controller;
 
+import edu.espe.f1.dto.CircuitMapper;
+import edu.espe.f1.dto.CircuitResponseDTO;
 import edu.espe.f1.entity.Circuit;
 import edu.espe.f1.service.CircuitService;
 import jakarta.validation.Valid;
@@ -20,28 +22,34 @@ public class CircuitController {
 
     // GET /api/circuits
     @GetMapping
-    public ResponseEntity<List<Circuit>> getAllCircuits() {
-        return ResponseEntity.ok(circuitService.getAllCircuits());
+    public ResponseEntity<List<CircuitResponseDTO>> getAllCircuits() {
+        List<CircuitResponseDTO> dtos = circuitService.getAllCircuits().stream()
+                .map(CircuitMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(dtos);
     }
 
     // GET /api/circuits/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<Circuit> getCircuitById(@PathVariable Long id) {
-        return ResponseEntity.ok(circuitService.getCircuitById(id));
+    public ResponseEntity<CircuitResponseDTO> getCircuitById(@PathVariable Long id) {
+        Circuit circuit = circuitService.getCircuitById(id);
+        return ResponseEntity.ok(CircuitMapper.toDTO(circuit));
     }
 
     // POST /api/circuits
     @PostMapping
-    public ResponseEntity<Circuit> createCircuit(@Valid @RequestBody Circuit circuit) {
-        return new ResponseEntity<>(circuitService.createCircuit(circuit), HttpStatus.CREATED);
+    public ResponseEntity<CircuitResponseDTO> createCircuit(@Valid @RequestBody Circuit circuit) {
+        Circuit created = circuitService.createCircuit(circuit);
+        return new ResponseEntity<>(CircuitMapper.toDTO(created), HttpStatus.CREATED);
     }
 
     // PUT /api/circuits/{id}
     @PutMapping("/{id}")
-    public ResponseEntity<Circuit> updateCircuit(
+    public ResponseEntity<CircuitResponseDTO> updateCircuit(
             @PathVariable Long id,
             @Valid @RequestBody Circuit circuit) {
-        return ResponseEntity.ok(circuitService.updateCircuit(id, circuit));
+        Circuit updated = circuitService.updateCircuit(id, circuit);
+        return ResponseEntity.ok(CircuitMapper.toDTO(updated));
     }
 
     // DELETE /api/circuits/{id}
@@ -54,18 +62,20 @@ public class CircuitController {
     // POST /api/circuits/{circuitId}/drivers/{driverId}
     // Vincula un piloto a un circuito → inserta fila en driver_circuits
     @PostMapping("/{circuitId}/drivers/{driverId}")
-    public ResponseEntity<Circuit> linkDriver(
+    public ResponseEntity<CircuitResponseDTO> linkDriver(
             @PathVariable Long circuitId,
             @PathVariable String driverId) {
-        return ResponseEntity.ok(circuitService.linkDriver(circuitId, driverId));
+        Circuit updated = circuitService.linkDriver(circuitId, driverId);
+        return ResponseEntity.ok(CircuitMapper.toDTO(updated));
     }
 
     // DELETE /api/circuits/{circuitId}/drivers/{driverId}
     // Desvincula un piloto de un circuito → elimina fila en driver_circuits
     @DeleteMapping("/{circuitId}/drivers/{driverId}")
-    public ResponseEntity<Circuit> unlinkDriver(
+    public ResponseEntity<CircuitResponseDTO> unlinkDriver(
             @PathVariable Long circuitId,
             @PathVariable String driverId) {
-        return ResponseEntity.ok(circuitService.unlinkDriver(circuitId, driverId));
+        Circuit updated = circuitService.unlinkDriver(circuitId, driverId);
+        return ResponseEntity.ok(CircuitMapper.toDTO(updated));
     }
 }

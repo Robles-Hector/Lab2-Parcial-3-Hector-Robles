@@ -7,7 +7,8 @@ import edu.espe.f1.repository.RoleRepository;
 import edu.espe.f1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,9 +19,10 @@ public class AuthService {
 
     @Autowired private UserRepository userRepository;
     @Autowired private RoleRepository roleRepository;
-    @Autowired private JwtUtil        jwtUtil;
-
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @Autowired private JwtUtil jwtUtil;
+    
+    // Inyección limpia del Bean global configurado en SecurityConfig
+    @Autowired private PasswordEncoder passwordEncoder;
 
     // ── REGISTRO ─────────────────────────────────────────────────
     public Map<String, Object> register(String username, String password) {
@@ -35,7 +37,7 @@ public class AuthService {
 
         User user = new User();
         user.setUsername(username);
-        user.setPassword(encoder.encode(password));
+        user.setPassword(passwordEncoder.encode(password));
         user.getRoles().add(userRole);
         userRepository.save(user);
 
@@ -58,7 +60,7 @@ public class AuthService {
                 "Cuenta desactivada — contacta al administrador");
         }
 
-        if (!encoder.matches(password, user.getPassword())) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
                 "Usuario o contraseña incorrectos");
         }
@@ -83,14 +85,18 @@ public class AuthService {
         return Map.of("username", username, "role", role);
     }
 
-    // ── OBTENER USER POR TOKEN ────────────────────────────────────
-    public User getUserFromToken(String authHeader) {
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token requerido");
+    // ── OBTENER USUARIO ACTUAL (Alineado a Spring Security) ────────
+    public User getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username;
+        
+        if (principal instanceof org.springframework.security.core.userdetails.UserDetails) {
+            username = ((org.springframework.security.core.userdetails.UserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
         }
-        String token    = authHeader.substring(7);
-        String username = jwtUtil.extractUsername(token);
+
         return userRepository.findByUsername(username)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuario no encontrado"));
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Usuario no autenticado en el contexto actual"));
     }
 }

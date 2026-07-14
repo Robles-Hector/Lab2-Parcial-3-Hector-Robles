@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.espe.f1.entity.*;
 import edu.espe.f1.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,13 +16,21 @@ import java.util.List;
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    @Autowired private TeamRepository    teamRepository;
-    @Autowired private DriverRepository  driverRepository;
+    @Autowired private TeamRepository teamRepository;
+    @Autowired private DriverRepository driverRepository;
     @Autowired private CircuitRepository circuitRepository;
-    @Autowired private UserRepository    userRepository;
-    @Autowired private RoleRepository    roleRepository;
+    @Autowired private UserRepository userRepository;
+    @Autowired private RoleRepository roleRepository;
+    
+    // Inyección administrada por el contenedor de Spring Security
+    @Autowired private PasswordEncoder passwordEncoder;
 
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    // Lectura parametrizada desde properties / variables de entorno futuras
+    @Value("${app.admin.username:admin}")
+    private String adminUsername;
+
+    @Value("${app.admin.password:admin123}")
+    private String adminPassword;
 
     @Override
     public void run(String... args) throws Exception {
@@ -30,16 +39,16 @@ public class DataInitializer implements CommandLineRunner {
         if (roleRepository.count() == 0) {
             Role userRole  = roleRepository.save(new Role(Role.RoleName.ROLE_USER));
             Role adminRole = roleRepository.save(new Role(Role.RoleName.ROLE_ADMIN));
-            System.out.println("✅ Roles insertados: ROLE_USER, ROLE_ADMIN");
+            System.out.println("✅ Roles insertados de manera limpia: ROLE_USER, ROLE_ADMIN");
 
-            // Crear admin por defecto
+            // Configuración del administrador sin datos rígidos (hardcoded)
             User admin = new User();
-            admin.setUsername("admin");
-            admin.setPassword(encoder.encode("admin123"));
+            admin.setUsername(adminUsername);
+            admin.setPassword(passwordEncoder.encode(adminPassword));
             admin.getRoles().add(userRole);
             admin.getRoles().add(adminRole);
             userRepository.save(admin);
-            System.out.println("✅ Usuario admin creado (admin / admin123)");
+            System.out.println("✅ Usuario administrativo inicial sembrado con éxito.");
         }
 
         if (teamRepository.count() > 0
@@ -93,7 +102,6 @@ public class DataInitializer implements CommandLineRunner {
                 driver.setBio(d.get("bio").asText());
                 driver.setActive(true);
 
-                // Guardar el historial de temporadas como JSON crudo
                 JsonNode seasonsNode = d.get("seasons");
                 if (seasonsNode != null) {
                     driver.setSeasonsData(seasonsNode.toString());
@@ -102,13 +110,13 @@ public class DataInitializer implements CommandLineRunner {
                 String teamId = d.get("teamId").asText();
                 teamRepository.findById(teamId).ifPresentOrElse(
                     driver::setCurrentTeam,
-                    () -> System.out.println("⚠️  Equipo no encontrado: " + teamId)
+                    () -> System.out.println("⚠️ Equipo no encontrado: " + teamId)
                 );
 
                 driverRepository.save(driver);
                 count++;
             }
-            System.out.println("✅ " + count + " pilotos insertados.");
+            System.out.println("text.copy: " + count + " pilotos insertados.");
         }
 
         // ── 3. CIRCUITOS ─────────────────────────────────────────
@@ -130,7 +138,7 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         // ── 4. RELACIONES driver_circuits ────────────────────────
-        List<Driver>  allDrivers  = driverRepository.findAll();
+        List<Driver> allDrivers  = driverRepository.findAll();
         List<Circuit> allCircuits = circuitRepository.findAll();
 
         for (Driver driver : allDrivers) {
@@ -145,7 +153,7 @@ public class DataInitializer implements CommandLineRunner {
 
             boolean active2020_2026 = activeYears.stream().anyMatch(y -> y >= 2020 && y <= 2026);
             if (active2020_2026) {
-                driver.setActive(true); // blindaje: nunca perder este flag al re-guardar
+                driver.setActive(true);
                 for (Circuit circuit : allCircuits) {
                     if (circuit.getSince() <= 2026 && circuit.isActive()) {
                         driver.getCircuits().add(circuit);
@@ -159,14 +167,10 @@ public class DataInitializer implements CommandLineRunner {
             .mapToLong(d -> d.getCircuits().size()).sum();
         System.out.println("✅ " + total + " relaciones driver_circuits creadas.");
 
-        // Verificación de integridad — confirma que todos quedaron activos
         long activeCount   = driverRepository.findAll().stream().filter(Driver::isActive).count();
         long inactiveCount = driverRepository.count() - activeCount;
         System.out.println("🔍 Verificación: " + activeCount + " pilotos activos, " + inactiveCount + " inactivos.");
-        if (inactiveCount > 0) {
-            System.out.println("⚠️  ADVERTENCIA: hay pilotos con active=false tras la inicialización.");
-        }
-
+        
         System.out.println("🏁 Inicialización completada.");
     }
 

@@ -65,19 +65,22 @@ La app se abrirá en `http://localhost:3000`
 ## 📁 Estructura del proyecto
 
 ```
-
 ├── 📁 .github
 │   └── 📁 modernize
 │       └── 📁 java-upgrade
 │           ├── 📁 hooks
-│           │   └── 📁 scripts
-│           │       ├── 📄 recordToolUse.ps1
-│           │       └── 📄 recordToolUse.sh
+│           │   ├── 📁 scripts
+│           │   │   ├── 📄 recordToolUse.ps1
+│           │   │   └── 📄 recordToolUse.sh
+│           │   └── ⚙️ e2736fcc-115a-4d53-bfce-376e760f8a09.json
 │           └── ⚙️ .gitignore
 ├── 📁 f1-historical-backend
 │   ├── 📁 .github
 │   │   └── 📁 modernize
 │   │       └── 📁 java-upgrade
+│   │           ├── 📁 20260713212210
+│   │           │   ├── 📁 logs
+│   │           │   └── 📝 plan.md
 │   │           ├── 📁 hooks
 │   │           │   └── 📁 scripts
 │   │           │       ├── 📄 recordToolUse.ps1
@@ -95,23 +98,47 @@ La app se abrirá en `http://localhost:3000`
 │   │   │   │               ├── 📁 config
 │   │   │   │               │   ├── ☕ DataInitializer.java
 │   │   │   │               │   ├── ☕ JwtUtil.java
+│   │   │   │               │   ├── ☕ OpenApiConfig.java
 │   │   │   │               │   └── ☕ SecurityConfig.java
 │   │   │   │               ├── 📁 controller
 │   │   │   │               │   ├── ☕ AuthController.java
 │   │   │   │               │   ├── ☕ CircuitController.java
 │   │   │   │               │   ├── ☕ DriverController.java
+│   │   │   │               │   ├── ☕ RaceController.java
+│   │   │   │               │   ├── ☕ RaceResultController.java
 │   │   │   │               │   └── ☕ TeamController.java
+│   │   │   │               ├── 📁 dto
+│   │   │   │               │   ├── ☕ CircuitMapper.java
+│   │   │   │               │   ├── ☕ CircuitResponseDTO.java
+│   │   │   │               │   ├── ☕ CircuitSummaryDTO.java
+│   │   │   │               │   ├── ☕ DriverMapper.java
+│   │   │   │               │   ├── ☕ DriverResponseDTO.java
+│   │   │   │               │   ├── ☕ DriverSummaryDTO.java
+│   │   │   │               │   ├── ☕ ErrorResponseDTO.java
+│   │   │   │               │   ├── ☕ RaceMapper.java
+│   │   │   │               │   ├── ☕ RaceResponseDTO.java
+│   │   │   │               │   ├── ☕ RaceResultMapper.java
+│   │   │   │               │   ├── ☕ RaceResultResponseDTO.java
+│   │   │   │               │   ├── ☕ TeamMapper.java
+│   │   │   │               │   ├── ☕ TeamResponseDTO.java
+│   │   │   │               │   └── ☕ TeamSummaryDTO.java
 │   │   │   │               ├── 📁 entity
 │   │   │   │               │   ├── ☕ Circuit.java
 │   │   │   │               │   ├── ☕ Driver.java
 │   │   │   │               │   ├── ☕ DriverTransfer.java
+│   │   │   │               │   ├── ☕ Race.java
+│   │   │   │               │   ├── ☕ RaceResult.java
 │   │   │   │               │   ├── ☕ Role.java
 │   │   │   │               │   ├── ☕ Team.java
 │   │   │   │               │   └── ☕ User.java
+│   │   │   │               ├── 📁 exception
+│   │   │   │               │   └── ☕ GlobalExceptionHandler.java
 │   │   │   │               ├── 📁 repository
 │   │   │   │               │   ├── ☕ CircuitRepository.java
 │   │   │   │               │   ├── ☕ DriverRepository.java
 │   │   │   │               │   ├── ☕ DriverTransferRepository.java
+│   │   │   │               │   ├── ☕ RaceRepository.java
+│   │   │   │               │   ├── ☕ RaceResultRepository.java
 │   │   │   │               │   ├── ☕ RoleRepository.java
 │   │   │   │               │   ├── ☕ TeamRepository.java
 │   │   │   │               │   └── ☕ UserRepository.java
@@ -119,6 +146,8 @@ La app se abrirá en `http://localhost:3000`
 │   │   │   │               │   ├── ☕ AuthService.java
 │   │   │   │               │   ├── ☕ CircuitService.java
 │   │   │   │               │   ├── ☕ DriverService.java
+│   │   │   │               │   ├── ☕ RaceResultService.java
+│   │   │   │               │   ├── ☕ RaceService.java
 │   │   │   │               │   └── ☕ TeamService.java
 │   │   │   │               └── ☕ F1HistoricalBackendApplication.java
 │   │   │   └── 📁 resources
@@ -130,6 +159,7 @@ La app se abrirá en `http://localhost:3000`
 │   │               └── 📁 espe
 │   │                   └── 📁 f1
 │   │                       └── ☕ F1HistoricalBackendApplicationTests.java
+│   ├── ⚙️ .env.example
 │   ├── ⚙️ .gitattributes
 │   ├── ⚙️ .gitignore
 │   ├── 📝 HELP.md

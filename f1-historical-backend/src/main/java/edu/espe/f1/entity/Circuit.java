@@ -9,9 +9,12 @@ import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.EqualsAndHashCode;
+
 @Entity
 @Table(name = "circuits")
 @Data
+@EqualsAndHashCode(of = "id") 
 @NoArgsConstructor
 public class Circuit {
 

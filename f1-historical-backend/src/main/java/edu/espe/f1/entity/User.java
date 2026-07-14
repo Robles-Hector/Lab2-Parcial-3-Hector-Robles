@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
+@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 public class User {
 
